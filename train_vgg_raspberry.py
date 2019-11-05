@@ -38,7 +38,7 @@ def load_model():
     base_out = base_model.output
     # TODO: add a flatten layer, a dense layer with 256 units, a dropout layer with 0.5 rate,
     # TODO: and another dense layer for output. The final layer should have the same number of units as classes
-    
+
     output_1 = Flatten()(base_out)
     output_2 = Dense(256)(output_1)
     output_3 = Dropout(0.5)(output_2)
@@ -75,7 +75,7 @@ def load_data(src_path):
     for i in range(num_images):
         image_path = image_path_list[i]
         #print(image_path.split('\\'))
-        label = int(image_path.split('\\')[-2])
+        label = int(image_path.split('/')[-2])
         image = cv2.imread(image_path, 1)
         image = cv2.resize(image, (IMG_H, IMG_W)) - MEAN_PIXEL
         X[i, :, :, :] = image

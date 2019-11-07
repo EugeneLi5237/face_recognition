@@ -42,7 +42,7 @@ def load_model():
     output_1 = Flatten()(base_out)
     output_2 = Dense(256)(output_1)
     output_3 = Dropout(0.5)(output_2)
-    predictions  = Dense(NUM_CLASSES)(output_3)
+    predictions  = Dense(NUM_CLASSES, activation="softmax")(output_3)
 
 
     model = Model(inputs=base_model.input, outputs=predictions)
